@@ -1,24 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { CommonModule, NgClass } from '@angular/common';
 import { Livro } from './livro';
-// import { NgOptimizedImage } from "@angular/common";
 
 @Component({
   selector: 'app-livro',
-  imports: [],
+  imports: [NgClass, CommonModule],
   templateUrl: './livro.component.html',
   styleUrl: './livro.component.css'
 })
 export class LivroComponent {
 
-  alternarFavorito() {
-    this.livro.favorito = !this.livro.favorito;
-  }
+  livro = input.required<Livro>();
 
-  livro: Livro = {
-    titulo: "As ondas",
-    autoria: "Virginia Woolf",
-    favorito: false,
-    genero: "Ficção",
-    imagem: "https://m.media-amazon.com/images/I/81D2d6LqZdS._AC_UF1000,1000_QL80_.jpg"
+  alternarFavorito() {
+    this.livro().favorito = !this.livro().favorito;
   }
 }
