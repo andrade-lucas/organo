@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { LivroComponent } from '../livro/livro.component';
-import { livros } from '../../mock-livros';
+import { GeneroLiterario } from '../livro/livro';
+import { CommonModule, NgClass } from "@angular/common";
 
 @Component({
   selector: 'app-genero-literario',
-  imports: [LivroComponent],
+  imports: [CommonModule, LivroComponent, NgClass],
   templateUrl: './genero-literario.component.html',
   styleUrl: './genero-literario.component.css'
 })
 export class GeneroLiterarioComponent {
-  livro = livros[0]
+
+  genero = input.required<GeneroLiterario>();
 }
